@@ -16,11 +16,11 @@
 
 package org.tobarsegais.webapp;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.tobarsegais.webapp.data.Toc;
@@ -45,7 +45,7 @@ public class DocsServlet extends HttpServlet {
         boolean raw = req.getParameter("raw") != null;
         String topicKey = req.getParameter("topic");
         boolean isTopic = topicKey != null && topicKey.length() > 0;
-        
+
         String path = req.getPathInfo();
         if (path == null) {
             path = req.getServletPath();
@@ -123,12 +123,12 @@ public class DocsServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/docs-template.jsp").forward(req, resp);
         }
     }
-    
+
     /**
      * search full path for given topic href
-     * 
+     *
      * if topic key place more than one bundle, returns first found
-     * 
+     *
      * @param topicKey
      * @return
      */

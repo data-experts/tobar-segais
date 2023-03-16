@@ -16,30 +16,6 @@
 
 package org.tobarsegais.webapp;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.queryParser.QueryParser;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.RAMDirectory;
-import org.apache.lucene.util.Version;
-import org.jsoup.Jsoup;
-import org.tobarsegais.webapp.data.Extension;
-import org.tobarsegais.webapp.data.Index;
-import org.tobarsegais.webapp.data.IndexEntry;
-import org.tobarsegais.webapp.data.Plugin;
-import org.tobarsegais.webapp.data.Toc;
-import org.tobarsegais.webapp.data.TocEntry;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -64,6 +40,32 @@ import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
+import javax.xml.stream.XMLStreamException;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.util.Version;
+import org.jsoup.Jsoup;
+import org.tobarsegais.webapp.data.Extension;
+import org.tobarsegais.webapp.data.Index;
+import org.tobarsegais.webapp.data.IndexEntry;
+import org.tobarsegais.webapp.data.Plugin;
+import org.tobarsegais.webapp.data.Toc;
+import org.tobarsegais.webapp.data.TocEntry;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 
 /**
  * Loads all the bundles.
@@ -317,7 +319,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
         Properties properties = new Properties();
         try {
             // start with the global defaults
-            InputStream stream = getClass().getResourceAsStream("default-context-param.properties"); 
+            InputStream stream = getClass().getResourceAsStream("default-context-param.properties");
             try {
                 properties.load(stream);
             } finally {
@@ -353,7 +355,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
         }
         properties = new Properties();
         try {
-            // finally we let anyone bundling 
+            // finally we let anyone bundling
             InputStream stream = application.getResourceAsStream("/WEB-INF/override-context-param.properties");
             if (stream != null) {
                 try {
@@ -399,12 +401,12 @@ public class ServletContextListenerImpl implements ServletContextListener {
     public static Analyzer getAnalyzer(ServletContext application) {
         return (Analyzer) application.getAttribute("analyzer");
     }
-    
+
     @SuppressWarnings("unchecked")
     public static List<Pattern> getSequence(ServletContext application) {
         return (List<Pattern>) application.getAttribute("sequence");
     }
-    
+
     public static int getSequenceOrder(ServletContext application, String key) {
         int i = 0;
         for (Pattern p : getSequence(application)) {
@@ -413,7 +415,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
         }
         return i;
     }
-    
+
     @SuppressWarnings("unchecked")
     public static String getInitParameter(ServletContext application, String name) {
         return (String) application.getAttribute("context-param." + name);
