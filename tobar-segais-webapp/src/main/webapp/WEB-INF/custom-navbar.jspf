@@ -1,20 +1,14 @@
 <div class="navbar navbar-inverse navbar-fixed-top no-print">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="http://www.tobarsegais.org/">
-                <img src="/img/header-logo.png" border="0"/>
-                Tobar Segais
-            </a>
-            <div class="nav-collapse">
-             <ul class="nav">
-               <li class="active"><a href="${pageContext.request.contextPath}/docs/">Home</a></li>
-             </ul>
-           </div>
+    <div class="navbar-inner" style="padding: 0;">
+        <div class="container-fluid" style="background-image: url(${pageContext.request.contextPath}/img/deg-kacheln.svg);background-repeat: no-repeat; background-color: #007755;">
+            <div class="nav-collapse" style="min-height: 40px">
+                <img alt="data experts gmbh" src="${pageContext.request.contextPath}/img/logo-horizontal.svg" style="min-height: 24px; max-height: 24px; padding-top: 8px;">
+                <a href="https://kb.data-experts.de/display/XB/X-OUT+Betriebshandbuch" title="Betriebshandbuch" target="_blank" style="position: relative;top: 8px;left: calc(100% - 340px);">
+                    <svg class="" version="1.1" viewBox="0 0 24 24" width="20px" height="20px" role="img" aria-label="Hilfe">
+                        <path fill="none" stroke="#fff" stroke-width="2" d="M10 1v10l3-2 3 2V1M5.5 18a2.5 2.5 0 1 0 0 5H22M3 20.5v-17A2.5 2.5 0 0 1 5.5 1H21v17.007H5.492M20.5 18a2.5 2.5 0 1 0 0 5"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 </div>
